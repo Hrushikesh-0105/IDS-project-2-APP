@@ -250,41 +250,47 @@ class _HomeState extends State<Home> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      toggleOpacity = false;
-                                      tapOnOpacity = true;
-                                      overlayContainer = false;
-                                      //selectedImage = null;
-                                      setState(() {});
-                                    },
-                                    child: Container(
-                                      height: 50,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                          color: Colors.teal,
-                                          borderRadius:
-                                              BorderRadius.circular(50)),
-                                      child: Icon(
-                                        Icons.close_rounded,
-                                        size: 40,
-                                        color: Colors.white,
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: InkWell(
+                                        onTap: () {
+                                          toggleOpacity = false;
+                                          tapOnOpacity = true;
+                                          overlayContainer = false;
+                                          //selectedImage = null;
+                                          setState(() {});
+                                        },
+                                        child: Container(
+                                          height: 50,
+                                          width: 50,
+                                          decoration: BoxDecoration(
+                                              color: Colors.teal,
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: Icon(
+                                            Icons.close_rounded,
+                                            size: 40,
+                                            color: Colors.white,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                  ),
-                                  Text(
-                                    "Image Overlays",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 24,
-                                        fontFamily: "Poppins"),
-                                  ),
-                                ],
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                      child: Center(
+                                        child: Text(
+                                          "Image Overlays",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 24,
+                                              fontFamily: "Poppins"),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               SizedBox(
                                 height: 16,
@@ -334,38 +340,42 @@ class _HomeState extends State<Home> {
                                               backgroundColor: Colors.teal),
                                         ),
                                         //heart overlay
-                                        Container(
-                                            height: 52,
-                                            width: 252,
-                                            child: ListView.builder(
-                                              scrollDirection: Axis.horizontal,
-                                              itemBuilder: (context, index) {
-                                                return InkWell(
-                                                  onTap: () {
-                                                    overlayIndex = index;
-                                                    setState(() {});
-                                                  },
-                                                  child: Container(
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        8, 0, 8, 0),
-                                                    padding: EdgeInsets.all(4),
-                                                    width: 60,
-                                                    height: 60,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                        border: Border.all(
-                                                          color: Colors.teal,
-                                                          width: 1,
-                                                        )),
-                                                    child: Image.asset(
-                                                        overlays[index]),
-                                                  ),
-                                                );
-                                              },
-                                              itemCount: 15,
-                                            ))
+                                        Expanded(
+                                          child: Container(
+                                              height: 52,
+                                              child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemBuilder: (context, index) {
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      overlayIndex = index;
+                                                      setState(() {});
+                                                    },
+                                                    child: Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              8, 0, 8, 0),
+                                                      padding:
+                                                          EdgeInsets.all(4),
+                                                      width: 60,
+                                                      height: 60,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                          border: Border.all(
+                                                            color: Colors.teal,
+                                                            width: 1,
+                                                          )),
+                                                      child: Image.asset(
+                                                          overlays[index]),
+                                                    ),
+                                                  );
+                                                },
+                                                itemCount: 15,
+                                              )),
+                                        )
                                       ],
                                     )
                                   : Text(""),
